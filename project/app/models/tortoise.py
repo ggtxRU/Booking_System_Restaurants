@@ -1,4 +1,4 @@
-from typing import List
+
 from tortoise import fields, models
 from tortoise.contrib.pydantic import pydantic_model_creator
 
@@ -20,14 +20,9 @@ class Tables(models.Model):
     id=fields.IntField(pk=True)
     name=fields.TextField(null=False)
     total_number_of_seats=fields.IntField(null=False)
-    available_number_of_tables = fields.IntField(null=False)
-    time09_11 = fields.BooleanField(default=True)
-    time11_13 = fields.BooleanField(default=True)
-    time13_15 = fields.BooleanField(default=True)
-    time15_17 = fields.BooleanField(default=True)
-    time17_19 = fields.BooleanField(default=True)
-    time19_21 = fields.BooleanField(default=True)
-    time21_23 = fields.BooleanField(default=True)
+    available_number_of_tables=fields.IntField(null=False)
+    available_time=fields.TextField(default="09:00-11:00, 11:00-13:00, 13:00-15:00, 15:00-17:00, 17:00-19:00, 19:00-21:00, 21:00-23:00")
+    busy_time=fields.TextField(null=True)
 
     restaurants: fields.ForeignKeyRelation[Restaurants] = fields.ForeignKeyField("models.Restaurants", related_name="tables")
 

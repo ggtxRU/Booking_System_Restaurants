@@ -26,28 +26,3 @@ async def post_table(TablePayload: TablesPayloadSchema) -> str:
     await table.save()
     return table.id
 
-async def get_tables_by_time(time: str, number_of_people: int):
-    timing = {"09:00-11:00": "time09_11",
-              "11:00-13:00": "time11_13",
-              "13:00-15:00": "time13_15",
-              "15:00-17:00": "time15_17",
-              "17:00-19:00": "time17_19",
-              "19:00-21:00": "time19_21",
-              "21:00-23:00": "time21_23",
-            }
-
-    if timing[f"{time[0:]}"] == "time09_11":
-        tables = await Tables.filter(time17_19=True, total_number_of_seats__gte=number_of_people).all().values()
-    if timing[f"{time[0:]}"] == "time11_13":
-        tables = await Tables.filter(time17_19=True, total_number_of_seats__gte=number_of_people).all().values()
-    if timing[f"{time[0:]}"] == "time13_15":
-        tables = await Tables.filter(time17_19=True, total_number_of_seats__gte=number_of_people).all().values()   
-    if timing[f"{time[0:]}"] == "time15_17":
-        tables = await Tables.filter(time17_19=True, total_number_of_seats__gte=number_of_people).all().values()
-    if timing[f"{time[0:]}"] == "time17_19":
-        tables = await Tables.filter(time17_19=True, total_number_of_seats__gte=number_of_people).all().values()
-    if timing[f"{time[0:]}"] == "time19_21":
-        tables = await Tables.filter(time17_19=True, total_number_of_seats__gte=number_of_people).all().values()
-    if timing[f"{time[0:]}"] == "time21_23":
-        tables = await Tables.filter(time17_19=True, total_number_of_seats__gte=number_of_people).all().values()
-    return tables
