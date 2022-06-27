@@ -4,13 +4,12 @@ from fastapi import FastAPI
 from loguru import logger
 from .db import init_db
 from .api import welcome, restaurants, tables, client, fillingdb
-from .logs.loguru_config import init_logging
+
 
 
 
 def create_application() -> FastAPI:
-    init_logging()
-    logger.info("Initializing Application [START]")
+
     application = FastAPI()
     application.include_router(welcome.router)
     application.include_router(restaurants.router)

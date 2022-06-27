@@ -6,9 +6,6 @@ from tortoise import Tortoise
 from tortoise.contrib.fastapi import register_tortoise
 
 
-from app.logs.loguru_config import init_logging
-
-init_logging()
 
 TORTOISE_ORM = {
     "connections": {"default": os.environ.get("DATABASE_URL")},
